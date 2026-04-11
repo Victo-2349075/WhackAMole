@@ -156,7 +156,7 @@ public class GenerateurCibles : MonoBehaviour
         }
         else if (rendererPlateau != null)
         {
-            // Sinon, on utilise les limites visuelles du renderer (fallback)
+            // Sinon on utilise les limites visuelles du renderer (fallback)
             limites = rendererPlateau.bounds;
         }
         else
@@ -174,7 +174,7 @@ public class GenerateurCibles : MonoBehaviour
         // Génère une position aléatoire dans la zone
         Vector3 positionAleatoire = new Vector3(
             Random.Range(minX, maxX),// Position X aléatoire
-            limites.max.y + hauteurSpawn,  // Hauteur au-dessus du plateau
+            limites.max.y + hauteurSpawn,  // Hauteur au dessus du plateau
             Random.Range(minZ, maxZ)); // Position Z aléatoire
 
         // Applique la position à la cible

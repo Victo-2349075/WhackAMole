@@ -156,7 +156,7 @@ public class GestionnaireJeu : MonoBehaviour
     /// <summary>
     /// Indique si une partie est actuellement en cours
     /// </summary>
-    /// <returns> si la partie est en cours c'est true, si elle n'est pas en cours c'est false</returns>
+    /// <returns> si la partie est en cours c'est true si elle n'est pas en cours c'est false</returns>
     public bool PartieEnCours()
     {
         return partieEnCours;

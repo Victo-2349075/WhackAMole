@@ -86,7 +86,7 @@ public class MarteauHaptique : MonoBehaviour
         // Vérifie qu'on a bien un contrôleur valide. Si il y a une interaction en cours et si l'interaction a bien un controleur Xr associé a la manette
         if (interactorActuel != null && interactorActuel.xrController != null)
         {
-            //// Envoie une vibration à la manette avec l’intensité et la durée données
+            // Envoie une vibration à la manette avec l’intensité et la durée données
             interactorActuel.xrController.SendHapticImpulse(amplitude, duree);
         }
     }
