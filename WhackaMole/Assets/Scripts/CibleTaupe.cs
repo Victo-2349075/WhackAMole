@@ -35,7 +35,7 @@ public class CibleTaupe : MonoBehaviour
     {
         gameObject.SetActive(true);
         EstVisible = true;
-
+        // Vérifie que la source audio et le son existent
         if (sourceAudio != null && sonApparition != null)
         {
             sourceAudio.spatialBlend = 1f;
@@ -60,7 +60,7 @@ public class CibleTaupe : MonoBehaviour
         gameObject.SetActive(false);
     }
     /// <summary>
-    /// Cache la taupe sans passer par la logique utilisé au début
+    /// Cache la cible sans passer par la logique utilisé au début
     /// </summary>
     private void CacherImmediate()
     {
@@ -69,7 +69,7 @@ public class CibleTaupe : MonoBehaviour
     }
 
     /// <summary>
-    /// Coroutine qui attend un délai avant de cacher la taupe
+    /// Coroutine qui attend un délai avant de cacher la cible
     /// </summary>
     /// <param name="delai">Temps d'attente en secondes</param>
     private IEnumerator CacherApresDelai(float delai)
@@ -79,13 +79,13 @@ public class CibleTaupe : MonoBehaviour
     }
     /// <summary>
     /// Détecte les collisions avec le marteau.
-    /// Si la taupe est visible et que la partie est en cours
+    /// Si la cible est visible et que la partie est en cours
     /// elle donne des points et joue les effets
     /// </summary>
     /// <param name="other">Collider entrant en collision</param>
     private void OnTriggerEnter(Collider other)
     {
-        // Ignore si la taupe n'est pas visible
+        // Ignore si la cible n'est pas visible
         if (!EstVisible)
             return;
         // Ignore si la partie n'est pas active
@@ -102,7 +102,7 @@ public class CibleTaupe : MonoBehaviour
         MarteauHaptique marteau = other.GetComponentInParent<MarteauHaptique>();
         if (marteau != null)
             marteau.JouerHaptiqueImpact();
-
+        //si sourceAudio et sonImpact existent
         if (sourceAudio != null && sonImpact != null)
         {
             sourceAudio.PlayOneShot(sonImpact);

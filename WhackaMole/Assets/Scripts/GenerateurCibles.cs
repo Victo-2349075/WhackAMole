@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,16 +34,18 @@ public class GenerateurCibles : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        // Si le plateau n'est pas assigné dans l'inspecteur
         if (plateauSpawn == null)
         {
             GameObject plateauTrouve = GameObject.Find("PlateauP");
+            // Si on trouve l'objet dans la scène
             if (plateauTrouve != null)
                 plateauSpawn = plateauTrouve.transform;
         }
-
+        // Si on a un plateau valide
         if (plateauSpawn != null)
         {
-
+            // On récupère le collider et l'autre le Renderer
             colliderPlateau = plateauSpawn.GetComponent<Collider>();
             rendererPlateau = plateauSpawn.GetComponent<Renderer>();
         }
@@ -67,6 +70,7 @@ public class GenerateurCibles : MonoBehaviour
     /// </summary>
     public void ArreterGeneration()
     {
+        // Vérifie si une coroutine de spawn est déjà en cours
         if (routineSpawn != null)
         {
             StopCoroutine(routineSpawn);
@@ -85,10 +89,12 @@ public class GenerateurCibles : MonoBehaviour
     /// <returns>IEnumerator pour la coroutine</returns>
     private IEnumerator BoucleSpawn()
     {
+        //tant que la partie est en cours
         while (GestionnaireJeu.Instance.PartieEnCours())
         {
             CibleTaupe cible = ObtenirCibleAleatoire();
 
+            // Vérifie qu'on a bien une cible valide (pas null)
             if (cible != null)
             {
                 PositionnerCibleSurPlateau(cible.transform);
@@ -145,14 +151,17 @@ public class GenerateurCibles : MonoBehaviour
 
         if (colliderPlateau != null)
         {
+            //// Si le plateau a un collider, on utilise ses limites
             limites = colliderPlateau.bounds;
         }
         else if (rendererPlateau != null)
         {
+            // Sinon, on utilise les limites visuelles du renderer (fallback)
             limites = rendererPlateau.bounds;
         }
         else
         {
+            //si aucun des 2 n'existe, on arrete
             return;
         }
         // Définition des limites avec une marge

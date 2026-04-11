@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 //https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.2/api/UnityEngine.XR.Interaction.Toolkit.SelectEnterEventArgs.html
 //https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.0/api/UnityEngine.XR.Interaction.Toolkit.XRController.html
+//https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/api/UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInputInteractor.html
 /// <summary>
 /// Gère les vibrations haptiques du marteau en VR
 /// Lorsqu'on attrape le marteau (sensation léger)
@@ -11,7 +12,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 /// </summary>
 public class MarteauHaptique : MonoBehaviour
 {
-    public XRGrabInteractable grabInteractable; // Permet d'interagir (prendre/lâcher le marteau)
+    public XRGrabInteractable grabInteractable; // Permet d'interagir donc prendre et lâcher le marteau
 
     [Header("Grab")]
     public float amplitudeGrab = 0.25f;
@@ -28,6 +29,7 @@ public class MarteauHaptique : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        // Si non assigné, récupère automatiquement le composant sur l'objet
         if (grabInteractable == null)
             grabInteractable = GetComponent<XRGrabInteractable>();
     }
@@ -81,9 +83,10 @@ public class MarteauHaptique : MonoBehaviour
     /// <param name="duree">Durée en secondes</param>
     private void EnvoyerHaptique(float amplitude, float duree)
     {
-        // Vérifie qu'on a bien un contrôleur valide (XRBaseController version plus récente)
+        // Vérifie qu'on a bien un contrôleur valide. Si il y a une interaction en cours et si l'interaction a bien un controleur Xr associé a la manette
         if (interactorActuel != null && interactorActuel.xrController != null)
         {
+            //// Envoie une vibration à la manette avec l’intensité et la durée données
             interactorActuel.xrController.SendHapticImpulse(amplitude, duree);
         }
     }

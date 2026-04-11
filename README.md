@@ -148,6 +148,7 @@ Repositionnement de la cible avant son affichage
 - Comment faire un jeu Whack a Mole en Unity
 - Comment détecter une collision avec OnTriggerEnter Unity
 - Comment envoyer une vibration avec XR Interaction Toolkit
+- Comment utiliser XRBaseInputInteractor dans Unity XR Interaction Toolkit
 - Comment afficher un score avec TextMeshPro Unity
 - Comment faire apparaître des objets aléatoirement sur une zone Unity
 - Comment gérer une coroutine de spawn Unity
@@ -164,7 +165,7 @@ Repositionnement de la cible avant son affichage
 
 ## Conclusion
 
-Ce projet démontre l'intégration :  D'une mécanique de jeu arcade en
+Ce projet démontre l'intégration :  D'une mécanique d'un jeu classique de fête foraine en
 VR Du grab interactif avec XR Interaction Toolkit - De la détection
 de collision - De la gestion d'état - De l'interface utilisateur en
 World Space

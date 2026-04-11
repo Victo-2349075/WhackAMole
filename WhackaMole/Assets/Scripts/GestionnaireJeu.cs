@@ -37,9 +37,10 @@ public class GestionnaireJeu : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        // Si aucune instance n'existe encore
         if (Instance == null)
         {
-            Instance = this;
+            Instance = this;  // On définit cette instance comme la seule (singleton)
         }
         else
         {
@@ -91,7 +92,7 @@ public class GestionnaireJeu : MonoBehaviour
 
         MettreAJourScore();
         MettreAJourTemps();
-
+        // Vérifie si le générateur existe puis lance le spawn des cibles
         if (generateur != null)
             generateur.DemarrerGeneration();
     }
